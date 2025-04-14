@@ -6,7 +6,6 @@ from datetime import datetime
 # ------------------------------
 # Carregar dados
 # ------------------------------
-@st.cache_data(show_spinner=True)
 def carregar_dados_emendas():
     url = "http://191.252.193.11:5000/emendas"
     df = pd.read_json(url)
