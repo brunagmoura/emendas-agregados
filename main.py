@@ -112,26 +112,26 @@ bar1 = (
             ),
             legend=alt.Legend(
                 orient="top",
-                direction="horizontal",
+                direction="vertical",
                 columns=4,
-                labelFontSize=9,
+                labelFontSize=9.5,
                 titleFontSize=12
             )
         ),
         xOffset=alt.X("tipo_emenda:N", sort=ordem_facetas),
         tooltip=["Ano", "tipo_emenda", "dotacao"]
     )
-    .properties(
-        width=700,
-        height=400,
-        title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
-    )
+    #.properties(
+    #    width=700,
+    #    height=400,
+    #    title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
+    #)
 )
 
 # Texto no topo das barras
 text1 = (
     alt.Chart(df1)
-    .mark_text(align="center", dy=-8, fontSize=9)
+    .mark_text(align="center", dy=-8, fontSize=12, dx=12)
     .encode(
         x=alt.X("Ano:O", sort=sorted(df1["Ano"].unique())),
         y="loa_mais_credito:Q",
@@ -307,11 +307,12 @@ chart3 = (
 
 st.altair_chart(chart3, use_container_width=True)
 
-
 # ---------------------------
 # 4) Comparação de loa_mais_credito, empenhado e pago em 2025
 # ---------------------------
 st.header("4. Execução orçamentária (2025)")
+
+st.info("Buscando algum programa específico? Tente filtrar pela lupa da tabela!")
 
 # Função para formatar valores no padrão brasileiro em milhões
 def formatar_valor_br(x):
@@ -401,9 +402,8 @@ st.markdown("---")
 
 st.markdown(
     """
-    🔗 Este aplicativo utiliza os dados obtidos via pacote [**orcamentoBR**](https://cran.r-project.org/web/packages/orcamentoBR/index.html), 
-    desenvolvido para facilitar o acesso ao orçamento público brasileiro diretamente a partir da linguagem R.
+    🔗 Este aplicativo utiliza os dados obtidos via pacote [**orcamentoBR**](https://cran.r-project.org/web/packages/orcamentoBR/index.html).
 
-    🙌 Agradecimentos especiais aos desenvolvedores do pacote.
+     📆 Os dados se referem ao dia anterior à atualização.
     """
 )
