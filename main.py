@@ -183,7 +183,7 @@ bar = (
         y=alt.Y("loa_mais_credito:Q", axis=alt.Axis(title=None, labels=False, ticks=False)),
         tooltip=["Ano", "Funcao_desc", "dotacao"]
     )
-    .properties(width=170, height=140)
+    .properties(width=250, height=140)
 )
 
 # Texto no topo da barra
@@ -271,7 +271,7 @@ bar3 = (
         ),
         tooltip=["Ano", "tipo_emenda", "ModalidadeAplicacao_desc", "dotacao"]
     )
-    .properties(width=300, height=140)
+    .properties(width=450, height=140)
 )
 
 # Texto no topo da barra
