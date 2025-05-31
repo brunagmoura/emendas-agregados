@@ -121,11 +121,11 @@ bar1 = (
         xOffset=alt.X("tipo_emenda:N", sort=ordem_facetas),
         tooltip=["Ano", "tipo_emenda", "dotacao"]
     )
-    #.properties(
-    #    width=700,
-    #    height=400,
-    #    title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
-    #)
+    .properties(
+        width=700,
+        height=400,
+        title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
+    )
 )
 
 # Texto no topo das barras
@@ -168,7 +168,7 @@ df_tipo = df_tipo[df_tipo["loa_mais_credito"] > 0]
 
 # Corrigir formatação
 df_tipo["dotacao"] = df_tipo["loa_mais_credito"].apply(
-    lambda x: f'{x / 1e9:,.1f} bi'.replace(",", "X").replace(".", ",").replace("X", ".")
+    lambda x: f'{x / 1e6:,.1f} mi'.replace(",", "X").replace(".", ",").replace("X", ".")
 )
 
 # Cor da emenda selecionada
@@ -183,7 +183,7 @@ bar = (
         y=alt.Y("loa_mais_credito:Q", axis=alt.Axis(title=None, labels=False, ticks=False)),
         tooltip=["Ano", "Funcao_desc", "dotacao"]
     )
-    .properties(width=250, height=140)
+    .properties(width=160, height=100)
 )
 
 # Texto no topo da barra
@@ -198,7 +198,7 @@ text = (
 )
 
 # Facet final
-titulo = f"Dotação atualizada (R$ bilhões) por função de governo para as emendas {tipo_selecionado}"
+titulo = f"Dotação atualizada (R$ milhões) por função de governo para as emendas {tipo_selecionado}"
 
 chart_funcao = (
     (bar + text)
@@ -232,7 +232,7 @@ df3 = (
 # Remove zero e cria coluna formatada
 df3 = df3[df3["loa_mais_credito"] > 0].copy()
 df3["dotacao"] = df3["loa_mais_credito"].apply(
-    lambda x: f'{x / 1e9:,.1f} bi'.replace(",", "X").replace(".", ",").replace("X", ".")
+    lambda x: f'{x / 1e6:,.1f} mi'.replace(",", "X").replace(".", ",").replace("X", ".")
 )
 
 # Paleta de cores por modalidade
@@ -271,7 +271,7 @@ bar3 = (
         ),
         tooltip=["Ano", "tipo_emenda", "ModalidadeAplicacao_desc", "dotacao"]
     )
-    .properties(width=450, height=140)
+    .properties(width=280, height=140)
 )
 
 # Texto no topo da barra
@@ -300,7 +300,7 @@ chart3 = (
             title=None,
             header=alt.Header(labelFontWeight="bold")
         ),
-        title="Dotação atualizada (R$ bilhões) por modalidade de aplicação"
+        title="Dotação atualizada (R$ milhões) por modalidade de aplicação"
     )
     .resolve_scale(y='shared')
 )
