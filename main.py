@@ -207,6 +207,10 @@ chart_funcao = (
         title=titulo
     )
     .resolve_scale(y='shared')
+    .properties(
+        width='container',   
+        height='container' 
+    )
 )
 
 st.altair_chart(chart_funcao, use_container_width=True)
@@ -301,6 +305,9 @@ chart3 = (
         title="Dotação atualizada (R$ milhões) por modalidade de aplicação"
     )
     .resolve_scale(y='shared')
+     .properties(
+        width='container',   
+        height='container')
 )
 
 st.altair_chart(chart3, use_container_width=True)
