@@ -122,6 +122,8 @@ bar1 = (
         tooltip=["Ano", "tipo_emenda", "dotacao"]
     )
     .properties(
+        width=700,
+        height=400,
         title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
     )
 )
@@ -181,6 +183,7 @@ bar = (
         y=alt.Y("loa_mais_credito:Q", axis=alt.Axis(title=None, labels=False, ticks=False)),
         tooltip=["Ano", "Funcao_desc", "dotacao"]
     )
+    .properties(width=160, height=100)
 )
 
 # Texto no topo da barra
@@ -197,29 +200,17 @@ text = (
 # Facet final
 titulo = f"Dotação atualizada (R$ milhões) por função de governo para as emendas {tipo_selecionado}"
 
-unit = (
-    (bar + text)
-    .properties(
-        width='container',      
-        height=140              
-    )
-)
-
 chart_funcao = (
-    unit
+    (bar + text)
     .facet(
-        facet=alt.Facet("Funcao_desc:N", title=None,
-                        header=alt.Header(labelFontWeight="bold")),
+        facet=alt.Facet("Funcao_desc:N", title=None, header=alt.Header(labelFontWeight="bold")),
         columns=7,
         title=titulo
     )
     .resolve_scale(y='shared')
-    .properties(
-        autosize=alt.AutoSizeParams(type="fit", contains="padding")
-    )
 )
 
-st.altair_chart(chart_funcao, use_container_width=False)
+st.altair_chart(chart_funcao, use_container_width=True)
 
 
 # ---------------------------
@@ -280,6 +271,7 @@ bar3 = (
         ),
         tooltip=["Ano", "tipo_emenda", "ModalidadeAplicacao_desc", "dotacao"]
     )
+    .properties(width=280, height=140)
 )
 
 # Texto no topo da barra
@@ -311,9 +303,6 @@ chart3 = (
         title="Dotação atualizada (R$ milhões) por modalidade de aplicação"
     )
     .resolve_scale(y='shared')
-     .properties(
-        width='container',   
-        height='container')
 )
 
 st.altair_chart(chart3, use_container_width=True)
