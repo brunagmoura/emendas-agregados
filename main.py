@@ -219,7 +219,7 @@ chart_funcao = (
     )
 )
 
-st.altair_chart(chart_funcao, use_container_width=True)
+st.altair_chart(chart_funcao, use_container_width=False)
 
 
 # ---------------------------
