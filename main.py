@@ -122,8 +122,6 @@ bar1 = (
         tooltip=["Ano", "tipo_emenda", "dotacao"]
     )
     .properties(
-        width=700,
-        height=400,
         title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
     )
 )
@@ -183,7 +181,6 @@ bar = (
         y=alt.Y("loa_mais_credito:Q", axis=alt.Axis(title=None, labels=False, ticks=False)),
         tooltip=["Ano", "Funcao_desc", "dotacao"]
     )
-    .properties(width=160, height=100)
 )
 
 # Texto no topo da barra
@@ -271,7 +268,6 @@ bar3 = (
         ),
         tooltip=["Ano", "tipo_emenda", "ModalidadeAplicacao_desc", "dotacao"]
     )
-    .properties(width=280, height=140)
 )
 
 # Texto no topo da barra
