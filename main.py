@@ -199,17 +199,25 @@ text = (
 # Facet final
 titulo = f"Dotação atualizada (R$ milhões) por função de governo para as emendas {tipo_selecionado}"
 
-chart_funcao = (
+unit = (
     (bar + text)
+    .properties(
+        width='container',      
+        height=140              
+    )
+)
+
+chart_funcao = (
+    unit
     .facet(
-        facet=alt.Facet("Funcao_desc:N", title=None, header=alt.Header(labelFontWeight="bold")),
+        facet=alt.Facet("Funcao_desc:N", title=None,
+                        header=alt.Header(labelFontWeight="bold")),
         columns=7,
         title=titulo
     )
     .resolve_scale(y='shared')
     .properties(
-        width='container',   
-        height='container' 
+        autosize=alt.AutoSizeParams(type="fit", contains="padding")
     )
 )
 
