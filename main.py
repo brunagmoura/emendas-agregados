@@ -122,9 +122,7 @@ bar1 = (
         tooltip=["Ano", "tipo_emenda", "dotacao"]
     )
     .properties(
-        title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar",
-        width='container',
-        height='container'
+        title="Dotação atualizada (R$ bilhões) por tipo de emenda parlamentar"
     )
 )
 
